@@ -15,7 +15,8 @@ public class ServerHandler extends IoHandlerAdapter {
             //arg0.write("ConnectSuccess");
             ListSerialPort listSerialPort = new ListSerialPort();
             listSerialPort.listPorts();
-            arg0.write(listSerialPort.serialPortName);
+            String serialPortName = listSerialPort.serialPortName.toString();
+            arg0.write(serialPortName.substring(serialPortName.indexOf("[")+1,serialPortName.indexOf("]")));
         } else {
             Thread.sleep(100);
             System.out.println("come in Serial");
