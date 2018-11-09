@@ -28,12 +28,13 @@ public class SerialHandler implements IoHandler {
 
     public void messageReceived(IoSession ioSession, Object o) throws Exception {
 
-        System.out.println(o.toString());
+        System.out.println("message Received" + o.toString());
+        System.out.println(Convert.ioBufferToString(o));
 
     }
 
     public void messageSent(IoSession ioSession, Object o) throws Exception {
-        System.out.println(ioSession.getLastReadTime());
+        System.out.println("message sent"+ioSession.getLastReadTime());
 
     }
 

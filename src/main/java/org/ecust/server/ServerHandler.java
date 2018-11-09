@@ -3,7 +3,7 @@ package org.ecust.server;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IoSession;
 
-import org.ecust.server.serial.Test;
+import org.ecust.server.serial.SerialDialog;
 
 public class ServerHandler extends IoHandlerAdapter {
 
@@ -28,7 +28,7 @@ public class ServerHandler extends IoHandlerAdapter {
             Thread.sleep(100);
             System.out.println("come in Serial");
 
-            Test serialDialog = new Test();
+            SerialDialog serialDialog = new SerialDialog();
 
 
             serialDialog.serialDialog(msg);
