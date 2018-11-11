@@ -4,6 +4,7 @@ import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IoSession;
 
 import org.ecust.server.serial.SerialDialog;
+import org.ecust.server.serial.SerialHandler;
 
 public class ServerHandler extends IoHandlerAdapter {
 
@@ -29,11 +30,14 @@ public class ServerHandler extends IoHandlerAdapter {
             System.out.println("come in Serial");
 
             SerialDialog serialDialog = new SerialDialog();
-
-
-            serialDialog.serialDialog(msg);
+            serialDialog.serialDialogs(msg);
+            String serialReturn = SerialHandler.msg;
+            if (serialReturn != null){
+            arg0.write(serialReturn);}else{
+                arg0.write("null");
+            }
             serialDialog = null;
-            arg0.write("test");
+
 
         }
 

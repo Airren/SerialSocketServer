@@ -6,6 +6,8 @@ import org.apache.mina.core.session.IoSession;
 
 public class SerialHandler implements IoHandler {
 
+    public static String msg;
+
     public void sessionCreated(IoSession ioSession) throws Exception {
 
     }
@@ -27,9 +29,10 @@ public class SerialHandler implements IoHandler {
     }
 
     public void messageReceived(IoSession ioSession, Object o) throws Exception {
+        msg = Convert.ioBufferToString(o);
 
-        System.out.println("message Received" + o.toString());
-        System.out.println(Convert.ioBufferToString(o));
+        //System.out.println("message Received" + o.toString());
+        System.out.println(msg);
 
     }
 
