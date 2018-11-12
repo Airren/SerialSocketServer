@@ -21,6 +21,8 @@ public class ServerHandler extends IoHandlerAdapter {
             arg0.write(serialPortName.substring(serialPortName.indexOf("[") + 1, serialPortName.indexOf("]")));
         } else if (msg.startsWith("COM")) {
             System.out.println("SUCCESS");
+            SerialDialog.serialPortParam = msg.split(",");
+
 
             arg0.write("SUCCESS");
 
@@ -29,8 +31,14 @@ public class ServerHandler extends IoHandlerAdapter {
             Thread.sleep(100);
             System.out.println("come in Serial");
 
+
             SerialDialog serialDialog = new SerialDialog();
             serialDialog.serialDialogs(msg);
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
             String serialReturn = SerialHandler.msg;
             if (serialReturn != null){
             arg0.write(serialReturn);}else{
